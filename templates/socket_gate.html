@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row center-align">
+  <div class="col s12">
+      <div class="card maincard">
+        <div class="card-content">
+          <span class="card-title"><h2>Socket Gate</h2></span>
+          <div class="row">
+            <div class="col s12 left-align">
+              <ol>
+                <li>Connect to socket: <span id="wsurl">ws://[domain]:5001</span></li>
+                <li>Generate access token by sending message : 
+                  <div class="yellow lighten-3" style="margin: 5px; width: 90%;height: 60px;overflow: auto;padding: 5px;font-family: monospace; font-size: 0.8em;"> 
+                    {{cookie}}
+                  </div>
+                </li>
+                <li>Submit recieved token in the form below to proceed</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s4 m4 offset-m4 l4 offset-l4">
+              <form id="socketGate" name="socketGate" action="/r/socket_gate" method="POST">
+                <input placeholder="Access Token" type="text" id="socketGateMessage" name="socketGateMessage"></input>
+                <button class="btn deep-orange darken-4">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+  document.querySelector("span#wsurl").innerText="ws://"+window.location.hostname+":5001";
+</script>
+{% endblock %}
